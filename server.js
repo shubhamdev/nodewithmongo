@@ -1,10 +1,15 @@
 var express = require('express'),
 mongoose = require('mongoose'),
+mongoosec = require('mongoose').MongoClient,
 bodyParser = require('body-parser'),
+// var cors = require('cors'),
 fs = require('fs');
 
+
+
 //MongoDB connction string
-var mongoUri = 'mongodb://localhost:27017';
+// var mongoUri = 'mongodb://localhost:27017';
+var mongoUri = "mongodb://shubham:shubham@ds135186.mlab.com:35186/shubham"
 mongoose.connect(mongoUri);
 var db = mongoose.connection;
 db.on('error', function () {
@@ -19,6 +24,7 @@ app.use(bodyParser.json());
 
 //Import folder path
 require('./app/models/musician');
+require('./app/models/user');
 require('./app/routes/routes')(app);
 
 //Server port listner
